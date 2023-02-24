@@ -1,15 +1,11 @@
 <template>
   <main class="home" aria-labelledby="main-title">
     <header class="hero">
-      <img
-        v-if="data.heroImage"
-        src="./logo.png"
-        :alt="data.heroAlt || 'hero'"
-      >
+      <img v-if="data.heroImage" src="./logo.png" :alt="data.heroAlt || 'hero'">
 
       <h1 v-if="data.heroText !== null" id="main-title">{{ data.heroText || $title || 'Hello' }}</h1>
 
-      <div class="sponser">
+      <!-- <div class="sponser">
         特别赞助
         <a href="https://www.apifox.cn?utm_source=shanyue-question" class="logo">
           <img src="https://cdn.apifox.cn/logo/apifox-logo-text.png" height="32px" alt="apifox">
@@ -17,44 +13,28 @@
         <a href="https://www.apifox.cn?utm_source=shanyue-question">
           API 文档、API 调试、API Mock、API 自动化测试
         </a>
-      </div>
+      </div> -->
 
-      <p class="description">
+      <!-- <p class="description">
         {{ data.tagline || $description || 'Welcome to your VuePress site' }}
-      </p>
+      </p> -->
 
 
-      <p
-        class="action"
-        v-if="data.actionText && data.actionLink"
-      >
-        <NavLink
-          class="action-button"
-          :item="actionLink"
-        />
-      </p>
+      <!-- <p class="action" v-if="data.actionText && data.actionLink">
+        <NavLink class="action-button" :item="actionLink" />
+      </p> -->
     </header>
 
-    <div
-      class="features"
-      v-if="data.features && data.features.length"
-    >
-      <div
-        class="feature"
-        v-for="(feature, index) in data.features"
-        :key="index"
-      >
+    <div class="features" v-if="data.features && data.features.length">
+      <div class="feature" v-for="(feature, index) in data.features" :key="index">
         <h2>{{ feature.title }}</h2>
         <p>{{ feature.details }}</p>
       </div>
     </div>
 
-    <Content class="theme-default-content custom"/>
+    <Content class="theme-default-content custom" />
 
-    <div
-      class="footer"
-      v-if="data.footer"
-    >
+    <div class="footer" v-if="data.footer">
       {{ data.footer }}
     </div>
   </main>
@@ -67,11 +47,11 @@ export default {
   components: { NavLink },
 
   computed: {
-    data () {
+    data() {
       return this.$page.frontmatter
     },
 
-    actionLink () {
+    actionLink() {
       return {
         link: this.data.actionLink,
         text: this.data.actionText

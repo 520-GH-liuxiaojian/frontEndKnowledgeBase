@@ -1,34 +1,15 @@
 <template>
-  <nav
-    class="nav-links"
-    v-if="userLinks.length || repoLink"
-  >
+  <nav class="nav-links" v-if="userLinks.length || repoLink">
     <!-- user links -->
-    <div
-      class="nav-item"
-      v-for="item in userLinks"
-      :key="item.link"
-    >
-      <DropdownLink
-        v-if="item.type === 'links'"
-        :item="item"
-      />
-      <NavLink
-        v-else
-        :item="item"
-      />
+    <div class="nav-item" v-for="item in userLinks" :key="item.link">
+      <DropdownLink v-if="item.type === 'links'" :item="item" />
+      <NavLink v-else :item="item" />
     </div>
 
     <!-- repo link -->
-    <a
-      v-if="repoLink"
-      :href="repoLink"
-      class="repo-link"
-      target="_blank"
-      rel="noopener noreferrer"
-    >
+    <a v-if="repoLink" :href="repoLink" class="repo-link" target="_blank" rel="noopener noreferrer">
       {{ repoLabel }}
-      <OutboundLink/>
+      <OutboundLink />
     </a>
   </nav>
 </template>
@@ -42,11 +23,11 @@ export default {
   components: { NavLink, DropdownLink },
 
   computed: {
-    userNav () {
+    userNav() {
       return this.$themeLocaleConfig.nav || this.$site.themeConfig.nav || []
     },
 
-    nav () {
+    nav() {
       const { locales } = this.$site
       if (locales && Object.keys(locales).length > 1) {
         const currentLink = this.$page.path
@@ -78,7 +59,7 @@ export default {
       return this.userNav
     },
 
-    userLinks () {
+    userLinks() {
       return (this.nav || []).map(link => {
         return Object.assign(resolveNavLinkItem(link), {
           items: (link.items || []).map(resolveNavLinkItem)
@@ -86,7 +67,7 @@ export default {
       })
     },
 
-    repoLink () {
+    repoLink() {
       const { repo } = this.$site.themeConfig
       if (repo) {
         return /^https?:/.test(repo)
@@ -96,7 +77,7 @@ export default {
       return null
     },
 
-    repoLabel () {
+    repoLabel() {
       if (!this.repoLink) return
       if (this.$site.themeConfig.repoLabel) {
         return this.$site.themeConfig.repoLabel
