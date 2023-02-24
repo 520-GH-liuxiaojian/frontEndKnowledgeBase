@@ -10,7 +10,7 @@ const { sidebar: mockSidebar } = require('../data/mock')
 module.exports = {
   base: '/',
   title: '前端知识库',
-  description: '每天至少一个前端面试题，并附以答案及讨论。有关前端，后端，graphql，devops，微服务以及软技能，促进个人职业成长，敲开大厂之门。每天五分钟，半年大厂中',
+  description: '前端知识库',
   head: [
     ['link', { rel: 'shortcut icon', href: '/favicon.ico', type: 'image/x-icon' }],
     // 设置 Google 的 Search Console
@@ -19,16 +19,16 @@ module.exports = {
   shouldPrefetch: () => false,
   bundler: '@vuepress/bundler-vite',
   themeConfig: {
-    repo: '/520-GH-liuxiaojian/technicalDocuments/',
+    repo: '/520-GH-liuxiaojian/frontEndKnowledgeBase',
     nav: [
       { text: '主页', link: '/' },
       { text: '前端基础', link: '/fe/' },
       { text: '高级前端', link: '/server/' },
-      // { text: '周刊', link: '/weekly/' },
+      { text: '周刊', link: '/weekly/' },
       { text: '前端工程化', link: '/engineering/' },
       { text: '前端部署', link: '/deploy/' },
       // { text: 'Linux技能实战', link: '/command/' },
-      { text: '模拟面试', link: '/mock/' },
+      // { text: '模拟面试', link: '/mock/' },
       {
         text: '更多面试题',
         items: [
@@ -40,7 +40,7 @@ module.exports = {
           { text: '面经大全', link: '/interview.html' },
         ]
       },
-      // { text: '面试路线图', link: '/roadmap/code.html' },
+      { text: '面试路线图', link: '/roadmap/code.html' },
       // { text: 'Apifox', link: 'https://www.apifox.cn?utm_source=shanyue-question' },
       // { text: '极客时间返现', link: 'https://geek.shanyue.tech' },
     ],
